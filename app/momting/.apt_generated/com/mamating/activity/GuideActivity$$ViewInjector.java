@@ -16,7 +16,7 @@ public class GuideActivity$$ViewInjector {
     if (view == null) {
       throw new IllegalStateException("Required view with id '2131034177' for field 'mGuideIndicator' was not found. If this view is optional add '@Optional' annotation.");
     }
-    target.mGuideIndicator = (com.mamating.ui.GuideIndicator) view;
+    target.mGuideIndicator = (com.viewpagerindicator.CirclePageIndicator) view;
   }
 
   public static void reset(com.mamating.activity.GuideActivity target) {

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/nux_dayone_register_facebook"
+        style="@style/NuxLandingButton"
+        android:layout_marginLeft="@dimen/nux_dayone_landing_margin"
+        android:layout_marginRight="@dimen/nux_dayone_landing_margin"
+        android:background="@drawable/nux_dayone_button_facebook"
+        android:gravity="bottom" >
+
+        <TextView
+            style="@style/NuxLandingTextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="0.0dip"
+            android:drawableLeft="@drawable/nux_dayone_icon_facebook"
+            android:drawablePadding="8.0dip"
+            android:text="@string/nux_dayone_register_facebook"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/nux_dayone_register_facebook"
+        style="@style/NuxLandingButton"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/nux_dayone_landing_margin"
+        android:layout_marginRight="@dimen/nux_dayone_landing_margin"
+        android:background="@drawable/nux_dayone_button_facebook" >
+
+        <TextView
+            style="@style/NuxLandingTextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="0.0dip"
+            android:drawableLeft="@drawable/nux_dayone_icon_facebook"
+            android:drawablePadding="8.0dip"
+            android:text="@string/nux_dayone_register_facebook"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+</LinearLayout>

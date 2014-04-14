@@ -5,5 +5,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="nux_dayone_register_facebook">Register with Facebook</string>
+    <string name="enter_momting">进入妈妈听</string>
 
 </resources>
