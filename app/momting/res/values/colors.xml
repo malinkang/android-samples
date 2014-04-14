@@ -1,0 +1,9 @@
+<resources>
+
+    <color name="white">#ffffffff</color>
+    <color name="step_pager_selected_tab_color">#ff0099cc</color>
+    <color name="step_pager_unselected_tab_color">#ff696969</color>
+    <color name="nux_dayone_facebook_enabled">#803b5998</color>
+    <color name="nux_dayone_facebook_pressed">#b03b5998</color>
+
+</resources>
