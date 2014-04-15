@@ -17,7 +17,7 @@
         android:layout_marginBottom="38dip"
         android:layout_marginLeft="10dip"
         android:layout_marginRight="10dip"
-        android:background="@drawable/nux_dayone_button_facebook"
+        android:background="@drawable/nux_dayone_button_email"
         android:padding="10.0dip"
         android:text="@string/enter_momting"
         android:textColor="@color/white"

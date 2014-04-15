@@ -5,5 +5,7 @@
     <color name="nux_dayone_facebook_pressed">#b03b5998</color>
     <color name="nux_dayone_email_enabled">#20ffffff</color>
     <color name="nux_dayone_email_pressed">#30ffffff</color>
+    <color name="nux_dayone_log_in_enabled">#10ffffff</color>
+    <color name="nux_dayone_log_in_pressed">#18ffffff</color>
 
 </resources>
