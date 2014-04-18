@@ -24,8 +24,8 @@ import android.widget.ImageView;
 import butterknife.InjectView;
 
 import com.mamating.R;
+import com.mamating.constants.Constants;
 import com.mamating.util.CommonUtility;
-import com.mamating.util.Constants;
 
 public class SinaOauthActivity extends ActionBarActivity {
 	private MenuItem refreshItem;

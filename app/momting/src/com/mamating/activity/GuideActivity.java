@@ -37,7 +37,6 @@ public class GuideActivity extends FragmentActivity {
 		mPagerAdapter = new GuidePagerAdapter(getSupportFragmentManager());
 		mViewPager.setAdapter(mPagerAdapter);
 		mGuideIndicator.setViewPager(mViewPager);
-
 	}
 
 	private class GuidePagerAdapter extends FragmentPagerAdapter {

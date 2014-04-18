@@ -1,27 +1,25 @@
 package com.mamating.api;
 
+import java.util.ArrayList;
+
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.mamating.util.Constants;
-import com.mamating.util.LogUtil;
+import com.mamating.bean.Account;
+import com.mamating.bean.Bind;
+import com.mamating.bean.BindInfo;
+import com.mamating.bean.UserInfo;
+import com.mamating.constants.Constants;
 
 /**
  * 
  * @author malinkang 2014年4月15日
  * 
  */
-public class LoginApi {
-
-	private AsyncHttpClient client;
-
-	public LoginApi() {
-		client = new AsyncHttpClient();
-	}
+public class LoginApi extends BaseApi {
 
 	public void getSinaAccessToken(String code) {
 		RequestParams params = new RequestParams();
@@ -112,11 +110,6 @@ public class LoginApi {
 				});
 	}
 
-	/**
-	 * 
-	 * @param qqUser
-	 * @param handler
-	 */
 	public void getQQUserInfo(final String access_token, final String openId) {
 		RequestParams params = new RequestParams();
 		params.put("access_token", access_token);
@@ -134,6 +127,7 @@ public class LoginApi {
 							String figureurl_2 = obj.getString("figureurl_2");
 							Login("qzone", nickname, openId, figureurl_2,
 									access_token);
+
 						} catch (JSONException e) {
 							e.printStackTrace();
 						}
@@ -148,13 +142,7 @@ public class LoginApi {
 				});
 	}
 
-	/**
-	 * QQ�û���½
-	 * 
-	 * @param qqUser
-	 * @param handler
-	 */
-	public void Login(String type, String username, String uid, String avatar,
+	private void Login(String type, String username, String uid, String avatar,
 			String oauth_token) {
 		RequestParams params = new RequestParams();
 		params.put("UserType", type);
@@ -167,8 +155,14 @@ public class LoginApi {
 					@Override
 					public void onSuccess(int statusCode, Header[] headers,
 							String content) {
-						LogUtil.e(content);
 
+						UserInfo userInfo = mGson.fromJson(content,
+								UserInfo.class);
+						if (userInfo != null) {
+							checkBindInfo(userInfo.getRespMsg());
+						} else {
+							//
+						}
 					}
 
 					@Override
@@ -179,97 +173,41 @@ public class LoginApi {
 				});
 	}
 
-	// public void sinaLogin(final SinaUser sinaUser, final Handler handler) {
-	// RequestParams params = new RequestParams();
-	// params.put("UserType", "sina");
-	// params.put("UserName", sinaUser.getUname());
-	// params.put("Uid", sinaUser.getUid());
-	// params.put("UserAvatar", sinaUser.getAvatar());
-	// params.put("Oauth_Token", sinaUser.getAccess_token());
-	// final HandlerManager manager = HandlerManager.getInstance(handler);
-	// client.post(getURL(R.string.login), params,
-	// new AsyncHttpResponseHandler() {
-	// @Override
-	// public void onSuccess(int arg0, String arg1) {
-	// super.onSuccess(arg0, arg1);
-	// LogUtil.i("�����û���½�ɹ�" + arg1);
-	// try {
-	// JSONObject obj = new JSONObject(arg1)
-	// .getJSONObject("respMsg");
-	// LoginUser user = new LoginUser();
-	// user.setAvatar(obj.optString("avatar"));
-	// user.setUid(obj.optString("uid"));
-	// user.setUname(obj.optString("uname"));
-	// user.setSessionid(obj.optString("sessionid"));
-	// String isNew = obj.optString("is_new");
-	// if (isNew.equals("0")) {
-	// user.setNew(false);
-	// } else {
-	// user.setNew(true);
-	// }
-	// user.setSina_accesstoken(sinaUser.getAccess_token());
-	// user.setSina_uid(sinaUser.getUid());
-	// manager.sendDataParseSuccessMessage(user,
-	// R.string.login);
-	// } catch (Exception e) {
-	// }
-	// }
-	//
-	// @Override
-	// public void onFailure(Throwable e, String arg1) {
-	// super.onFailure(e, arg1);
-	// }
-	// });
-	// }
+	public void checkBindInfo(final Account account) {
+		RequestParams params = new RequestParams();
+		params.put("PHPSESSID", account.getSessionid());
+		client.post(Constants.CHECKBIND_URL, params,
+				new AsyncHttpResponseHandler() {
+					@Override
+					public void onSuccess(int statusCode, Header[] headers,
+							String content) {
 
-	// /**
-	// * ���ƽ̨����Ϣ
-	// *
-	// * @param user
-	// * @param handler
-	// */
-	// public void checkBindInfo(final LoginUser user, final Handler handler) {
-	// RequestParams params = new RequestParams();
-	// params.put("PHPSESSID", user.getSessionid());
-	// final HandlerManager manager = HandlerManager.getInstance(handler);
-	// client.post(getURL(R.string.checkbind), params,
-	// new AsyncHttpResponseHandler() {
-	// @Override
-	// public void onSuccess(int arg0, String arg1) {
-	// // TODO Auto-generated method stub
-	// super.onSuccess(arg0, arg1);
-	// try {
-	// JSONArray array = new JSONObject(arg1)
-	// .getJSONArray("respMsg");
-	// for (int i = 0; i < array.length(); i++) {
-	// String type = array.getJSONObject(i).getString(
-	// "type");
-	// String oauth_token = array.getJSONObject(i)
-	// .getString("oauth_token");
-	// String type_uid = array.getJSONObject(i)
-	// .getString("type_uid");
-	// if (type.equals("sina")) {
-	// user.setSina_accesstoken(oauth_token);
-	// user.setSina_uid(type_uid);
-	// } else {
-	// user.setQq_accesstoken(oauth_token);
-	// user.setQq_uid(type_uid);
-	// }
-	// }
-	// manager.sendDataParseSuccessMessage(user,
-	// R.string.checkbind);
-	// } catch (JSONException e) {
-	// e.printStackTrace();
-	// }
-	//
-	// }
-	//
-	// @Override
-	// public void onFailure(Throwable arg0, String arg1) {
-	// super.onFailure(arg0, arg1);
-	// }
-	//
-	// });
-	// }
+						BindInfo bindInfo = mGson.fromJson(content,
+								BindInfo.class);
+						if (bindInfo != null) {
+							ArrayList<Bind> respMsg = bindInfo.getRespMsg();
+							for (Bind bind : respMsg) {
+								if (bind.getType().equals(Bind.SINA)) {
+									account.setSina_uid(bind.getType_uid());
+									account.setSina_oauth_token(bind
+											.getOauth_token());
+								} else {
+									account.setQq_uid(bind.getType_uid());
+									account.setQq_oauth_token(bind
+											.getOauth_token());
+								}
+							}
+							// 删除
+							Account.delete(Account.class, 1);
+							account.save();
+						}
+					}
 
+					@Override
+					public void onFailure(int statusCode, Throwable error,
+							String content) {
+
+					}
+				});
+	}
 }

@@ -4,46 +4,54 @@
     android:layout_height="match_parent"
     android:background="@drawable/splash_bg" >
 
-    <FrameLayout
-        android:id="@+id/login_with_qq"
-        style="@style/NuxLandingButton"
+    <LinearLayout
+        android:id="@+id/oauth_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="60dp"
-        android:layout_marginLeft="@dimen/nux_dayone_landing_margin"
-        android:layout_marginRight="@dimen/nux_dayone_landing_margin"
-        android:background="@drawable/nux_dayone_button_email" >
+        android:layout_marginBottom="16dip"
+        android:orientation="vertical"
+        android:visibility="gone" >
 
-        <TextView
-            style="@style/NuxLandingTextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center"
-            android:layout_marginBottom="0.0dip"
-            android:drawableLeft="@drawable/login_connect_qq_normal"
-            android:drawablePadding="8.0dip"
-            android:text="@string/login_with_qq"
-            android:textStyle="bold" />
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/login_with_qq"
+            style="@style/NuxLandingButton"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="@dimen/nux_dayone_landing_margin"
+            android:layout_marginRight="@dimen/nux_dayone_landing_margin"
+            android:background="@drawable/nux_dayone_button_email" >
 
-    <FrameLayout
-        android:id="@+id/login_with_sina"
-        style="@style/NuxLandingButton"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="@dimen/nux_dayone_landing_margin"
-        android:layout_marginRight="@dimen/nux_dayone_landing_margin"
-        android:background="@drawable/nux_dayone_button_email" >
+            <TextView
+                style="@style/NuxLandingTextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="0.0dip"
+                android:drawableLeft="@drawable/login_connect_qq_normal"
+                android:drawablePadding="8.0dip"
+                android:text="@string/login_with_qq"
+                android:textStyle="bold" />
+        </FrameLayout>
 
-        <TextView
-            style="@style/NuxLandingTextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center"
-            android:layout_marginBottom="0.0dip"
-            android:drawableLeft="@drawable/login_connect_sina_normal"
-            android:drawablePadding="8.0dip"
-            android:text="@string/login_with_sina"
-            android:textStyle="bold" />
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/login_with_sina"
+            style="@style/NuxLandingButton"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/nux_dayone_landing_margin"
+            android:layout_marginRight="@dimen/nux_dayone_landing_margin"
+            android:background="@drawable/nux_dayone_button_email" >
+
+            <TextView
+                style="@style/NuxLandingTextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="0.0dip"
+                android:drawableLeft="@drawable/login_connect_sina_normal"
+                android:drawablePadding="8.0dip"
+                android:text="@string/login_with_sina"
+                android:textStyle="bold" />
+        </FrameLayout>
+    </LinearLayout>
 
 </RelativeLayout>

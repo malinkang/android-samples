@@ -2,13 +2,16 @@ package com.mamating.api;
 
 import java.security.KeyStore;
 
+import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
+import com.mamating.AppContext;
 
 public class BaseApi {
 	protected AsyncHttpClient client;
+	protected AppContext mApplication = AppContext.getInstance();
+	protected Gson mGson = AppContext.getGson();
 
 	public BaseApi() {
-		// TODO Auto-generated constructor stub
 		client = new AsyncHttpClient();
 		try {
 			KeyStore trustStore = KeyStore.getInstance(KeyStore

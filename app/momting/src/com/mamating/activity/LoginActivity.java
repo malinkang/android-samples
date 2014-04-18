@@ -1,16 +1,29 @@
 package com.mamating.activity;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.view.View;
+import android.widget.LinearLayout;
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 
+import com.activeandroid.content.ContentProvider;
+import com.mamating.AppContext;
 import com.mamating.R;
 import com.mamating.api.LoginApi;
+import com.mamating.bean.Account;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends FragmentActivity implements
+		LoaderCallbacks<Cursor> {
 	private LoginApi api;
+	@InjectView(R.id.oauth_login)
+	LinearLayout oauthLogin;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +31,7 @@ public class LoginActivity extends Activity {
 		setContentView(R.layout.activity_login);
 		ButterKnife.inject(this);
 		api = new LoginApi();
+		getSupportLoaderManager().initLoader(0, null, this);
 	}
 
 	@OnClick(R.id.login_with_qq)
@@ -49,5 +63,28 @@ public class LoginActivity extends Activity {
 
 			}
 		}
+	}
+
+	@Override
+	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
+		return new CursorLoader(this, ContentProvider.createUri(Account.class,
+				null), null, null, null, null);
+	}
+
+	@Override
+	public void onLoadFinished(Loader<Cursor> arg0, Cursor cursor) {
+		if (cursor != null && cursor.getCount() != 0) {
+			Account account = Account.getAccountFromCursor(cursor);
+			AppContext.getInstance().setAccount(account);
+			startActivity(new Intent(this, HomeActivity.class));
+			finish();
+		} else {
+			oauthLogin.setVisibility(View.VISIBLE);
+		}
+	}
+
+	@Override
+	public void onLoaderReset(Loader<Cursor> arg0) {
+
 	}
 }
