@@ -7,5 +7,10 @@
     <color name="nux_dayone_email_pressed">#30ffffff</color>
     <color name="nux_dayone_log_in_enabled">#10ffffff</color>
     <color name="nux_dayone_log_in_pressed">#18ffffff</color>
+    <color name="background">#fff4f5f7</color>
+    <color name="list_subtitle">#ff888888</color>
+    <color name="text_orange">#ffff5800</color>
+    <color name="text_common">#ff262b2f</color>
+    <color name="list_title">#ff262b2f</color>
 
 </resources>

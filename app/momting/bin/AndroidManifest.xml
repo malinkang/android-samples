@@ -48,7 +48,9 @@
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity android:name="com.mamating.activity.SinaOauthActivity" />
         <activity android:name="com.mamating.activity.QQOauthActivity" />
-        <activity android:name="com.mamating.activity.HomeActivity" />
+        <activity
+            android:name="com.mamating.activity.HomeActivity"
+            android:theme="@style/StyledIndicators" />
     </application>
 
 </manifest>

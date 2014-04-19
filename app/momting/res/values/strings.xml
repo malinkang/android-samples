@@ -7,5 +7,11 @@
     <string name="login_with_qq">使用QQ登陆</string>
     <string name="login_with_sina">使用新浪微博登陆</string>
     <string name="enter_momting">进入妈妈听</string>
+    <string name="my_collect">想学的课程</string>
+    <string name="look_all">查看全部</string>
+    <string name="create">添加课程</string>
+    <string name="create_collect_hint">点击“添加课程”添加新课程</string>
+    <string name="my_favorite">学过的课程</string>
+    <string name="fav_song">书名</string>
 
 </resources>

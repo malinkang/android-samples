@@ -2,14 +2,12 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar"></style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
+    <style name="AppTheme" parent="AppBaseTheme"></style>
 
     <style name="NuxLandingButton">
         <item name="android:layout_width">fill_parent</item>
@@ -53,7 +51,7 @@
         <item name="android:marqueeRepeatLimit">marquee_forever</item>
     </style>
 
-    <style name="StyledIndicators" parent="@android:style/Theme.Light">
+    <style name="StyledIndicators" parent="AppBaseTheme">
         <item name="vpiCirclePageIndicatorStyle">@style/CustomCirclePageIndicator</item>
         <item name="vpiLinePageIndicatorStyle">@style/CustomLinePageIndicator</item>
         <item name="vpiTitlePageIndicatorStyle">@style/CustomTitlePageIndicator</item>
@@ -98,13 +96,49 @@
         <item name="android:fadingEdgeLength">8dp</item>
     </style>
 
-
-
     <style name="CustomUnderlinePageIndicator">
         <item name="selectedColor">#FFCC0000</item>
         <item name="android:background">#FFCCCCCC</item>
         <item name="fadeLength">1000</item>
         <item name="fadeDelay">1000</item>
+    </style>
+
+    <style name="headIcon">
+        <item name="android:textSize">@dimen/text_sub</item>
+        <item name="android:textColor">@color/text_common</item>
+        <item name="android:paddingTop">14.0dip</item>
+        <item name="android:paddingBottom">9.0dip</item>
+        <item name="android:drawableLeft">@drawable/icon_quan</item>
+        <item name="android:drawablePadding">5.0dip</item>
+    </style>
+
+    <style name="headIconSubtitle">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">@color/list_subtitle</item>
+        <item name="android:paddingLeft">5.0dip</item>
+        <item name="android:paddingTop">14.0dip</item>
+        <item name="android:paddingBottom">9.0dip</item>
+    </style>
+
+    <style name="myXiamiButton" parent="@style/textSingleLine">
+        <item name="android:textSize">@dimen/text_sub</item>
+        <item name="android:textColor">@color/text_orange</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">15.0dip</item>
+        <item name="android:paddingBottom">10.0dip</item>
+        <item name="android:drawablePadding">3.0dip</item>
+    </style>
+
+    <style name="listItemSubtitle" parent="@style/listItemTitle">
+        <item name="android:textSize">@dimen/list_subtitle</item>
+        <item name="android:textColor">@color/list_subtitle</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="listItemTitle" parent="@style/textSingleLine">
+        <item name="android:textSize">@dimen/list_title</item>
+        <item name="android:textColor">@color/list_title</item>
+        <item name="android:ellipsize">end</item>
     </style>
 
 </resources>

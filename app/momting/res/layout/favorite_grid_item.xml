@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/simple_list_selector"
+        android:minHeight="@dimen/favorite_grid_item_minheight"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="@dimen/favorite_grid_item_rect"
+            android:layout_height="@dimen/favorite_grid_item_rect" >
+
+            <ImageView
+                android:id="@+id/cover"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cover_dt_m" />
+
+            <TextView
+                android:id="@+id/song_count"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/shadow_round"
+                android:gravity="right"
+                android:paddingBottom="@dimen/favorite_grid_item_song_count_paddingbottom"
+                android:paddingRight="@dimen/favorite_grid_item_song_count_paddingright"
+                android:textColor="#ffffffff"
+                android:textSize="12.0sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/favorite_grid_item_fav_song_margintop"
+            android:ellipsize="end"
+            android:lineSpacingExtra="2.0dip"
+            android:maxLines="2"
+            android:singleLine="false"
+            android:text="@string/fav_song"
+            android:textColor="@color/list_title"
+            android:textSize="13.0sp" />
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-3.0dip"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:minLines="1"
+            android:textColor="@color/list_subtitle"
+            android:textSize="12.0sp" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/profile_content"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="200.0dip" >
+
+    <FrameLayout
+        android:id="@+id/avatar_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="60.0dip" >
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="60.0dip"
+            android:layout_height="60.0dip"
+            android:layout_marginLeft="20.0dip"
+            android:background="@drawable/bg_avatar"
+            android:contentDescription="avatar"
+            android:padding="5.0dip"
+            android:scaleType="fitXY"
+            android:src="@drawable/head_portrait_logo" />
+
+        <ImageView
+            android:id="@+id/ic_vip"
+            android:layout_width="20.0dip"
+            android:layout_height="20.0dip"
+            android:layout_gravity="right"
+            android:layout_marginRight="0.0dip"
+            android:layout_marginTop="0.0dip"
+            android:contentDescription="ic_vip"
+            android:src="@drawable/vip_ic"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/login_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/avatar_content"
+        android:layout_alignTop="@+id/avatar_content"
+        android:layout_marginBottom="12.0dip"
+        android:layout_marginTop="12.0dip"
+        android:layout_toRightOf="@+id/avatar_content"
+        android:background="@drawable/tip_bg"
+        android:gravity="right|center"
+        android:paddingLeft="15.0dip"
+        android:paddingRight="15.0dip"
+        android:text="点击头像登陆"
+        android:textColor="#ffffffff"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/pofile_bar_name_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/avatar_content"
+        android:layout_alignTop="@+id/avatar_content"
+        android:layout_marginLeft="8.0dip"
+        android:layout_toRightOf="@+id/avatar_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="user_name"
+            android:maxLength="20"
+            android:maxLines="2"
+            android:shadowColor="#80000000"
+            android:shadowDx="1.0"
+            android:shadowDy="1.0"
+            android:shadowRadius="1.0"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/user_age_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name"
+            android:contentDescription="user_age_location"
+            android:drawableLeft="@drawable/icon_gps"
+            android:drawablePadding="5.0dip"
+            android:maxWidth="150.0dip"
+            android:paddingRight="10.0dip"
+            android:shadowColor="#80000000"
+            android:shadowDx="1.0"
+            android:shadowDy="1.0"
+            android:shadowRadius="1.0"
+            android:textColor="#ffffffff"
+            android:textSize="12.0sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/user_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/user_name"
+            android:layout_marginLeft="2.0dip"
+            android:layout_marginTop="3.0dip"
+            android:layout_toRightOf="@+id/user_name"
+            android:contentDescription="user_gender" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_follow"
+        android:layout_width="wrap_content"
+        android:layout_height="38.0dip"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/pofile_bar_name_location"
+        android:layout_marginTop="12.0dip"
+        android:background="@drawable/translucent_button_bg"
+        android:contentDescription="btn_follow"
+        android:drawablePadding="7.0dip"
+        android:includeFontPadding="false"
+        android:maxWidth="100.0dip"
+        android:paddingLeft="12.0dip"
+        android:paddingRight="12.0dip"
+        android:text="关注"
+        android:textColor="#ffffffff"
+        android:textSize="14.0sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/bg_head"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/avatar_content"
+        android:layout_marginTop="14.0dip"
+        android:background="@drawable/bg_gradient_shadow"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingBottom="25.0dip"
+        android:paddingLeft="30.0dip"
+        android:paddingRight="30.0dip"
+        android:paddingTop="25.0dip" >
+
+        <RelativeLayout
+            android:id="@+id/follows"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/text_follows"
+                style="@style/textProfileTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5.0dip"
+                android:text="关注" />
+
+            <TextView
+                android:id="@+id/follows_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/text_follows"
+                android:layout_toRightOf="@+id/text_follows"
+                android:contentDescription="follows_count"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#ffffffff"
+                android:textSize="13.0sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1.0dip"
+            android:layout_height="9.0dip"
+            android:layout_gravity="center"
+            android:background="#ffffffff" />
+
+        <RelativeLayout
+            android:id="@+id/fans"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/text_fans"
+                style="@style/textProfileTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5.0dip"
+                android:text="粉丝" />
+
+            <TextView
+                android:id="@+id/fans_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/text_fans"
+                android:layout_toRightOf="@+id/text_fans"
+                android:contentDescription="fans_count"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#ffffffff"
+                android:textSize="13.0sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1.0dip"
+            android:layout_height="9.0dip"
+            android:layout_gravity="center"
+            android:background="#ffffffff" />
+
+        <RelativeLayout
+            android:id="@+id/recent_listen"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/text_recent_listen"
+                style="@style/textProfileTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5.0dip"
+                android:text="播放次数" />
+
+            <TextView
+                android:id="@+id/listens_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/text_recent_listen"
+                android:layout_toRightOf="@+id/text_recent_listen"
+                android:contentDescription="listens_count"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#ffffffff"
+                android:textSize="13.0sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_weibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:src="@drawable/other_logo_xinlang"
+        android:visibility="invisible" />
+
+</RelativeLayout>
