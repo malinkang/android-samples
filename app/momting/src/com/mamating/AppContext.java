@@ -6,6 +6,9 @@ import com.activeandroid.ActiveAndroid;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mamating.bean.Account;
+import com.mamating.bean.User2;
+import com.mamating.bean.UserAdapter;
+import com.mamating.media.PlayerEngineImpl;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -15,6 +18,8 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 public class AppContext extends Application {
 
 	public static AppContext mContext;
+	private PlayerEngineImpl mPlayerEngineImpl;
+
 	private Account account;
 
 	public static AppContext getInstance() {
@@ -35,8 +40,8 @@ public class AppContext extends Application {
 				.defaultDisplayImageOptions(options).writeDebugLogs()
 				.tasksProcessingOrder(QueueProcessingType.LIFO).build();
 		ImageLoader.getInstance().init(config);
-
 		ActiveAndroid.initialize(this);
+		mPlayerEngineImpl = new PlayerEngineImpl();
 
 	}
 
@@ -49,7 +54,9 @@ public class AppContext extends Application {
 
 	public static Gson getGson() {
 		GsonBuilder gsonBuilder = new GsonBuilder();
-		Gson gson = gsonBuilder.create();
+
+		Gson gson = gsonBuilder.registerTypeAdapter(User2.class,
+				new UserAdapter()).create();
 		return gson;
 	}
 
@@ -60,4 +67,9 @@ public class AppContext extends Application {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+
+	public PlayerEngineImpl getmPlayerEngineImpl() {
+		return mPlayerEngineImpl;
+	}
+
 }

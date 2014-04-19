@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.Set;
 
@@ -103,5 +104,10 @@ public class CommonUtility {
 			}
 		}
 		return false;
+	}
+
+	public static String audioDurationFromat(long seconds) {
+		SimpleDateFormat formatter = new SimpleDateFormat("mm:ss");// 初始化Formatter的转换格式。
+		return formatter.format(seconds);
 	}
 }

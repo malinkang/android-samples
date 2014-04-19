@@ -4,8 +4,8 @@
         "name":"回家",
         "author":"作者",
         "cover":"https://farm8.staticflickr.com/7395/13931500385_622b34feec_o.jpg",
-        "is_study":"是否学完",
-        "is_select":"用户是否选择",
+        "is_study":"1",
+        "is_select":"1",
         "content":[
             {
                 "record":"录音地址",
@@ -19,8 +19,8 @@
         "name":"回家",
         "author":"作者",
         "cover":"https://farm3.staticflickr.com/2919/13931532053_28dc34f5d0_o.jpg",
-        "is_study":"是否学完",
-        "is_select":"用户是否选择",
+        "is_study":"1",
+        "is_select":"1",
         "content":[
             {
                 "record":"录音地址",
@@ -34,8 +34,8 @@
         "name":"回家",
         "author":"作者",
         "cover":"https://farm3.staticflickr.com/2919/13931532053_28dc34f5d0_o.jpg",
-        "is_study":"是否学完",
-        "is_select":"用户是否选择",
+        "is_study":"1",
+        "is_select":"1",
         "content":[
             {
                 "record":"录音地址",
@@ -49,8 +49,8 @@
         "name":"回家",
         "author":"作者",
         "cover":"https://farm3.staticflickr.com/2919/13931532053_28dc34f5d0_o.jpg",
-        "is_study":"是否学完",
-        "is_select":"用户是否选择",
+        "is_study":"1",
+        "is_select":"1",
         "content":[
             {
                 "record":"录音地址",
@@ -64,8 +64,8 @@
         "name":"回家",
         "author":"作者",
         "cover":"https://farm3.staticflickr.com/2919/13931532053_28dc34f5d0_o.jpg",
-        "is_study":"是否学完",
-        "is_select":"用户是否选择",
+        "is_study":"1",
+        "is_select":"1",
         "content":[
             {
                 "record":"录音地址",
@@ -79,38 +79,8 @@
         "name":"回家",
         "author":"作者",
         "cover":"https://farm3.staticflickr.com/2919/13931532053_28dc34f5d0_o.jpg",
-        "is_study":"是否学完",
-        "is_select":"用户是否选择",
-        "content":[
-            {
-                "record":"录音地址",
-                "pic":"图片",
-                "user_record":"用户录音"
-            }
-        ]
-    },
-    {
-        "course_id":"2",
-        "name":"回家",
-        "author":"作者",
-        "cover":"https://farm3.staticflickr.com/2919/13931532053_28dc34f5d0_o.jpg",
-        "is_study":"是否学完",
-        "is_select":"用户是否选择",
-        "content":[
-            {
-                "record":"录音地址",
-                "pic":"图片",
-                "user_record":"用户录音"
-            }
-        ]
-    },
-    {
-        "course_id":"2",
-        "name":"回家",
-        "author":"作者",
-        "cover":"https://farm3.staticflickr.com/2919/13931532053_28dc34f5d0_o.jpg",
-        "is_study":"是否学完",
-        "is_select":"用户是否选择",
+        "is_study":"1",
+        "is_select":"1",
         "content":[
             {
                 "record":"录音地址",

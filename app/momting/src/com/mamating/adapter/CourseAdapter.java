@@ -68,7 +68,7 @@ public class CourseAdapter extends BaseAdapter {
 		mImageLoader.displayImage(course.getCover(), holder.cover);
 		holder.name.setText(course.getName());
 		holder.author.setText(course.getAuthor());
-		return null;
+		return view;
 	}
 
 }
