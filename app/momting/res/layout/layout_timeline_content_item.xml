@@ -1,0 +1,139 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white" >
+
+    <com.mamating.ui.SquareImageView
+        android:id="@+id/iv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:scaleType="fitXY" />
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_content"
+        android:layout_marginBottom="-16dp"
+        android:layout_marginLeft="-10dp"
+        android:maxHeight="4dp"
+        android:minHeight="4dp"
+        android:progressDrawable="@drawable/seekbar"
+        android:thumb="@drawable/seek_thumb_normal"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_play_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_content"
+        android:layout_alignLeft="@id/iv_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_total_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_content"
+        android:layout_alignRight="@id/iv_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="5dp"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/fl_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_content"
+        android:layout_alignRight="@id/iv_content"
+        android:layout_marginBottom="25dp"
+        android:layout_marginRight="5dp" >
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_extras_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/extras_info_background"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/iv_praise"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/selector_dm_haspraise"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="喜欢"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/iv_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/selector_dm_comment"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="评论"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/iv_share"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/selector_dm_share"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="分享"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/iv_more"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/selector_dm_more"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="更多"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <!-- 设置分割线无效 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/ll_extras_info"
+        android:background="@color/main_background"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+</RelativeLayout>
