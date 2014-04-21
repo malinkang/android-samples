@@ -1,6 +1,10 @@
 package com.mamating.constants;
 
 public class Constants {
+
+	public final static int INIT_DATA = 0;
+
+	public final static int LOAD_MORE = 1;
 	// 新浪AppKey
 	public final static String SINA_APP_KEY = "496476891";
 	// 新浪AppSercet
@@ -33,4 +37,24 @@ public class Constants {
 
 	public final static String CHECKBIND_URL = BASE_URL
 			+ "index.php?app=api&mod=Oauth&act=checkToken";
+
+	// 获取关注的人的列表URL
+	public final static String GET_FOLLOWING_URL = BASE_URL
+			+ "index.php?app=api&mod=User&act=following";
+	// 获取粉丝列表的URL
+	public final static String GET_FOLLOWER_URL = BASE_URL
+			+ "index.php?app=api&mod=User&act=followers";
+	// 获取关注人数量和粉丝数量
+	public final static String GET_FOLLOW_COUNT_URL = BASE_URL
+			+ "index.php?app=api&mod=User&act=getFollowCount";
+	// 获取互相关注的列表
+	public final static String GET_FRIEDN_URL = BASE_URL
+			+ "index.php?app=api&mod=User&act=getFriends";
+
+	// 推荐用户URL
+	public final static String GET_RECOMMAND_URL = BASE_URL
+			+ "index.php?app=api&mod=User&act=userStar";
+	// 添加关注或取消关注的URL
+	public final static String ADD_OR_CANCEL_FOLLOW_URL = BASE_URL
+			+ "index.php?app=api&mod=User&act=eachFollow";
 }

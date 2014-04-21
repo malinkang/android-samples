@@ -7,14 +7,9 @@ import butterknife.ButterKnife.Finder;
 public class GuideFragment$$ViewInjector {
   public static void inject(Finder finder, final com.mamating.fragment.GuideFragment target, Object source) {
     View view;
-    view = finder.findById(source, 2131034193);
+    view = finder.findById(source, 2131034196);
     if (view == null) {
-      throw new IllegalStateException("Required view with id '2131034193' for field 'guideImageView' was not found. If this view is optional add '@Optional' annotation.");
-    }
-    target.guideImageView = (android.widget.ImageView) view;
-    view = finder.findById(source, 2131034194);
-    if (view == null) {
-      throw new IllegalStateException("Required view with id '2131034194' for field 'enterBtn' and method 'enterLogin' was not found. If this view is optional add '@Optional' annotation.");
+      throw new IllegalStateException("Required view with id '2131034196' for field 'enterBtn' and method 'enterLogin' was not found. If this view is optional add '@Optional' annotation.");
     }
     target.enterBtn = (android.widget.Button) view;
     view.setOnClickListener(
@@ -25,10 +20,15 @@ public class GuideFragment$$ViewInjector {
           target.enterLogin();
         }
       });
+    view = finder.findById(source, 2131034195);
+    if (view == null) {
+      throw new IllegalStateException("Required view with id '2131034195' for field 'guideImageView' was not found. If this view is optional add '@Optional' annotation.");
+    }
+    target.guideImageView = (android.widget.ImageView) view;
   }
 
   public static void reset(com.mamating.fragment.GuideFragment target) {
-    target.guideImageView = null;
     target.enterBtn = null;
+    target.guideImageView = null;
   }
 }

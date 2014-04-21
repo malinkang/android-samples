@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:momting="http://schemas.android.com/apk/res-auto"
     android:id="@+id/profile_content"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -12,16 +13,14 @@
         android:layout_gravity="bottom"
         android:layout_marginTop="60.0dip" >
 
-        <ImageView
-            android:id="@+id/avatar"
+        <com.mamating.ui.CircleImageView
+            android:id="@+id/iv_avatar"
             android:layout_width="60.0dip"
             android:layout_height="60.0dip"
             android:layout_marginLeft="20.0dip"
             android:background="@drawable/bg_avatar"
-            android:contentDescription="avatar"
-            android:padding="5.0dip"
-            android:scaleType="fitXY"
-            android:src="@drawable/head_portrait_logo" />
+            momting:border_color="@color/dark"
+            momting:border_width="2dp" />
 
         <ImageView
             android:id="@+id/ic_vip"
@@ -227,7 +226,7 @@
                 android:text="帖子" />
 
             <TextView
-                android:id="@+id/listens_count"
+                android:id="@+id/feed_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/text_recent_listen"

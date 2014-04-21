@@ -5,11 +5,13 @@ import java.security.KeyStore;
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.mamating.AppContext;
+import com.mamating.bean.Account;
 
 public class BaseApi {
 	protected AsyncHttpClient client;
 	protected AppContext mApplication = AppContext.getInstance();
 	protected Gson mGson = AppContext.getGson();
+	protected Account account = mApplication.getAccount();
 
 	public BaseApi() {
 		client = new AsyncHttpClient();

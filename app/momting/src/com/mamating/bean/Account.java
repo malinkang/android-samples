@@ -1,13 +1,12 @@
 package com.mamating.bean;
 
 import android.database.Cursor;
-import android.provider.BaseColumns;
 
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.mamating.constants.AccountTable;
 
-@Table(name = AccountTable.TABLE_NAME, id = BaseColumns._ID)
+@Table(name = AccountTable.TABLE_NAME)
 public class Account extends User {
 	@Column(name = AccountTable.COLUMN_SINA_UID)
 	private String sina_uid;

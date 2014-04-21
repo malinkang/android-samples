@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,17 +20,20 @@ public class CourseAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
 	private ArrayList<Course> mCourses;
 	private ImageLoader mImageLoader;
+	private Boolean B;
 
 	private class ViewHolder {
 		ImageView cover;
 		TextView name;
 		TextView author;
+		CheckBox select;
 	}
 
-	public CourseAdapter(Context context, ArrayList<Course> courses) {
+	public CourseAdapter(Context context, ArrayList<Course> courses, Boolean b) {
 		mContext = context;
 		mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		B = b;
 		mCourses = courses;
 		mImageLoader = ImageLoader.getInstance();
 	}
@@ -60,6 +64,7 @@ public class CourseAdapter extends BaseAdapter {
 			holder.cover = (ImageView) view.findViewById(R.id.cover);
 			holder.name = (TextView) view.findViewById(R.id.name);
 			holder.author = (TextView) view.findViewById(R.id.author);
+			holder.select = (CheckBox) view.findViewById(R.id.select);
 			view.setTag(holder);
 		} else {
 			view = convertView;
@@ -68,6 +73,9 @@ public class CourseAdapter extends BaseAdapter {
 		mImageLoader.displayImage(course.getCover(), holder.cover);
 		holder.name.setText(course.getName());
 		holder.author.setText(course.getAuthor());
+		if (B) {
+			holder.select.setVisibility(View.VISIBLE);
+		}
 		return view;
 	}
 

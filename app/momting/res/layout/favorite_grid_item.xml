@@ -15,13 +15,28 @@
             android:layout_width="@dimen/favorite_grid_item_rect"
             android:layout_height="@dimen/favorite_grid_item_rect" >
 
-            <ImageView
-                android:id="@+id/cover"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center_horizontal"
-                android:scaleType="centerCrop"
-                android:src="@drawable/cover_dt_m" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cover_dt_m" />
+
+                <CheckBox
+                    android:id="@+id/select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|right"
+                    android:layout_marginRight="6dip"
+                    android:layout_marginTop="6dip"
+                    android:button="@drawable/checkbox_selector"
+                    android:visibility="gone" />
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/song_count"

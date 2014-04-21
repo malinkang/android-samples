@@ -1,14 +1,12 @@
 package com.mamating.bean;
 
-import android.provider.BaseColumns;
-
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.mamating.constants.UserTable;
 
-@Table(name = UserTable.TABLE_NAME, id = BaseColumns._ID)
+@Table(name = UserTable.TABLE_NAME)
 public class User extends BaseBean {
-	@Column(name = UserTable.COLUMN_UID)
+	@Column(name = UserTable.COLUMN_UID, unique = true)
 	protected Integer uid;
 	@Column(name = UserTable.COLUMN_AVATAR)
 	protected String avatar;
