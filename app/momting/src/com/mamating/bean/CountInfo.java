@@ -9,7 +9,8 @@ import com.mamating.constants.CountInfoTable;
 
 @Table(name = CountInfoTable.TABLE_NAME, id = BaseColumns._ID)
 public class CountInfo extends Model {
-	@Column(name = CountInfoTable.COLUMN_UID)
+	// 主键
+	@Column(name = CountInfoTable.COLUMN_UID, unique = true)
 	private String uid;
 	private Count count;
 	@Column(name = CountInfoTable.COLUMN_COUNT_JSON)

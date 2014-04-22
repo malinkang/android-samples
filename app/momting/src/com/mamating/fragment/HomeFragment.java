@@ -67,11 +67,13 @@ public class HomeFragment extends BaseFragment implements
 		getLoaderManager().initLoader(0, null, this);
 		// 显示头像
 		mImageLoader.displayImage(account.getAvatar(), avatar);
+
 		String json = ReadUtil.readFile(getActivity(), "course.json");
 		Gson mGson = AppContext.getGson();
 		ArrayList<Course> courses = mGson.fromJson(json,
 				new TypeToken<List<Course>>() {
 				}.getType());
+
 		CourseAdapter adapter = new CourseAdapter(getActivity(), courses, false);
 		favoriteContent.setAdapter(adapter);
 		hasStudyContent.setAdapter(adapter);

@@ -39,7 +39,6 @@ public class FriendShipApi extends BaseApi {
 				new AsyncHttpResponseHandler() {
 					@Override
 					public void onSuccess(int statusCode, String content) {
-
 						if (content != null) {
 							CountInfo countInfo = mGson.fromJson(content,
 									CountInfo.class);
@@ -63,9 +62,10 @@ public class FriendShipApi extends BaseApi {
 	 * @param uid
 	 * @param lastId
 	 */
-	public void getFollowing(String uid, String lastId, final int type) {
+	public void getFollowing(Integer uid, final String lastId) {
 		RequestParams params = new RequestParams();
-		params.put("Uid", uid);
+		// 传入Integer获取不到返回值
+		params.put("Uid", uid + "");
 		params.put("PHPSESSID", account.getSessionid());
 		params.put("LastID", lastId);
 		params.put("limit", "20");
@@ -74,23 +74,28 @@ public class FriendShipApi extends BaseApi {
 					@Override
 					public void onSuccess(int statusCode, String content) {
 						if (content != null) {
-							if (type == Constants.LOAD_MORE) {
-								Following.delete(Following.class, 1);
-							}
 							FollowingInfo followingInfo = mGson.fromJson(
 									content, FollowingInfo.class);
-							ArrayList<Following> followings = followingInfo
-									.getRespMsg();
-							ActiveAndroid.beginTransaction();
-							try {
-								for (Following following : followings) {
-									following.setFollow_state_json(mGson
-											.toJson(following.getFollow_state()));
-									following.save();
+							if (followingInfo != null) {
+								ArrayList<Following> followings = followingInfo
+										.getRespMsg();
+								ActiveAndroid.beginTransaction();
+								try {
+
+									if (lastId == null) {
+										// 清除数据库
+										Following.delete(Following.class, 1);
+									}
+									for (Following following : followings) {
+										following.setFollow_state_json(mGson
+												.toJson(following
+														.getFollow_state()));
+										following.save();
+									}
+									ActiveAndroid.setTransactionSuccessful();
+								} finally {
+									ActiveAndroid.endTransaction();
 								}
-								ActiveAndroid.setTransactionSuccessful();
-							} finally {
-								ActiveAndroid.endTransaction();
 							}
 						}
 					}
@@ -119,14 +124,11 @@ public class FriendShipApi extends BaseApi {
 				new AsyncHttpResponseHandler() {
 					@Override
 					public void onSuccess(int statusCode, String content) {
-						super.onSuccess(statusCode, content);
 						LogUtil.e("获取粉丝列表返回：" + content);
 					}
 
 					@Override
 					public void onFailure(Throwable error, String content) {
-						// TODO Auto-generated method stub
-						super.onFailure(error, content);
 					}
 				});
 	}
