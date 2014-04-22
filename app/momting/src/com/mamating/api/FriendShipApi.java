@@ -5,12 +5,18 @@ import java.util.ArrayList;
 import android.content.Context;
 
 import com.activeandroid.ActiveAndroid;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.Update;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.mamating.bean.AddOrCancelInfo;
 import com.mamating.bean.CountInfo;
+import com.mamating.bean.Follower;
+import com.mamating.bean.FollowerInfo;
 import com.mamating.bean.Following;
 import com.mamating.bean.FollowingInfo;
 import com.mamating.constants.Constants;
+import com.mamating.constants.FriendTable;
 import com.mamating.util.LogUtil;
 
 /**
@@ -51,7 +57,6 @@ public class FriendShipApi extends BaseApi {
 					@Override
 					public void onFailure(int statusCode, Throwable error,
 							String content) {
-
 					}
 				});
 	}
@@ -62,7 +67,7 @@ public class FriendShipApi extends BaseApi {
 	 * @param uid
 	 * @param lastId
 	 */
-	public void getFollowing(Integer uid, final String lastId) {
+	public void getFollowing(final Integer uid, final String lastId) {
 		RequestParams params = new RequestParams();
 		// 传入Integer获取不到返回值
 		params.put("Uid", uid + "");
@@ -79,22 +84,34 @@ public class FriendShipApi extends BaseApi {
 							if (followingInfo != null) {
 								ArrayList<Following> followings = followingInfo
 										.getRespMsg();
-								ActiveAndroid.beginTransaction();
-								try {
-
-									if (lastId == null) {
-										// 清除数据库
-										Following.delete(Following.class, 1);
+								if (followings != null) {
+									ActiveAndroid.beginTransaction();
+									try {
+										if (lastId == null) {
+											// 清除数据库
+											new Delete()
+													.from(Following.class)
+													.where(FriendTable.COLUMN_USER_ID
+															+ "=" + uid)
+													.execute();
+										}
+										// 插入数据
+										for (Following following : followings) {
+											following.setUser_id(uid);
+											following.setFollow_state_json(mGson
+													.toJson(following
+															.getFollow_state()));
+											following.save();
+										}
+										ActiveAndroid
+												.setTransactionSuccessful();
+									} finally {
+										ActiveAndroid.endTransaction();
 									}
-									for (Following following : followings) {
-										following.setFollow_state_json(mGson
-												.toJson(following
-														.getFollow_state()));
-										following.save();
-									}
-									ActiveAndroid.setTransactionSuccessful();
-								} finally {
-									ActiveAndroid.endTransaction();
+								} else {
+									// load finish
+									// {"respMsg":null,"respCode":"1006"}
+									mDataLoadFinishListener.loadFinish();
 								}
 							}
 						}
@@ -114,17 +131,55 @@ public class FriendShipApi extends BaseApi {
 	 * @param uid
 	 * @param lastId
 	 */
-	public void getFollower(String uid, String lastId) {
+	public void getFollower(final Integer uid, final String lastId) {
 		RequestParams params = new RequestParams();
-		params.put("Uid", uid);
+		params.put("Uid", uid + "");
 		params.put("PHPSESSID", account.getSessionid());
 		params.put("LastID", lastId);
-		params.put("limit", "1");
+		params.put("limit", "20");
 		client.post(Constants.GET_FOLLOWER_URL, params,
 				new AsyncHttpResponseHandler() {
 					@Override
 					public void onSuccess(int statusCode, String content) {
-						LogUtil.e("获取粉丝列表返回：" + content);
+
+						if (content != null) {
+							FollowerInfo followerInfo = mGson.fromJson(content,
+									FollowerInfo.class);
+							if (followerInfo != null) {
+								ArrayList<Follower> followers = followerInfo
+										.getRespMsg();
+								if (followers != null) {
+									ActiveAndroid.beginTransaction();
+									try {
+										if (lastId == null) {
+											// 清除数据库
+											new Delete()
+													.from(Follower.class)
+													.where(FriendTable.COLUMN_USER_ID
+															+ "=" + uid)
+													.execute();
+										}
+										// 插入数据
+										for (Follower follower : followers) {
+											follower.setUser_id(uid);
+											follower.setFollow_state_json(mGson
+													.toJson(follower
+															.getFollow_state()));
+											follower.save();
+										}
+										ActiveAndroid
+												.setTransactionSuccessful();
+									} finally {
+										ActiveAndroid.endTransaction();
+									}
+								} else {
+									// load finish
+									// {"respMsg":null,"respCode":"1006"}
+									mDataLoadFinishListener.loadFinish();
+								}
+							}
+						}
+
 					}
 
 					@Override
@@ -148,15 +203,11 @@ public class FriendShipApi extends BaseApi {
 				new AsyncHttpResponseHandler() {
 					@Override
 					public void onSuccess(int statusCode, String content) {
-						// TODO Auto-generated method stub
-						super.onSuccess(statusCode, content);
 						LogUtil.e("获取互相关注列表：" + content);
 					}
 
 					@Override
 					public void onFailure(Throwable error, String content) {
-						// TODO Auto-generated method stub
-						super.onFailure(error, content);
 					}
 				});
 	}
@@ -175,14 +226,12 @@ public class FriendShipApi extends BaseApi {
 					@Override
 					public void onSuccess(int statusCode, String content) {
 						// TODO Auto-generated method stub
-						super.onSuccess(statusCode, content);
 						LogUtil.e("获取推荐用户：" + content);
 					}
 
 					@Override
 					public void onFailure(Throwable error, String content) {
 						// TODO Auto-generated method stub
-						super.onFailure(error, content);
 					}
 				});
 	}
@@ -192,27 +241,33 @@ public class FriendShipApi extends BaseApi {
 	 * 
 	 * @param
 	 */
-	public void addOrCancelFollow(String fid) {
+	public void addOrCancelFollow(final Integer fid) {
 		RequestParams params = new RequestParams();
 		params.put("PHPSESSID", account.getSessionid());
-		params.put("fid", fid);
+		params.put("fid", fid + "");
 		client.post(Constants.ADD_OR_CANCEL_FOLLOW_URL, params,
 				new AsyncHttpResponseHandler() {
 					@Override
 					public void onSuccess(int statusCode, String content) {
-						// TODO Auto-generated method stub
-						super.onSuccess(statusCode, content);
 						LogUtil.e("添加或取消关注返回值：" + content);
 						// 修改关注列表和粉丝列表数据库
-						// 修改
+						AddOrCancelInfo addOrCancelInfo = mGson.fromJson(
+								content, AddOrCancelInfo.class);
+						String json = mGson.toJson(addOrCancelInfo.getRespMsg()
+								.getFollow_state());
+						new Update(Following.class)
+								.set(FriendTable.COLUMN_FOLLOW_STATE_JSON
+										+ "=?", json)
+								.where(FriendTable.COLUMN_USER_ID + "="
+										+ account.getUid() + " and "
+										+ FriendTable.COLUMN_UID + "=" + fid)
+								.execute();
+
 					}
 
 					@Override
 					public void onFailure(Throwable error, String content) {
-						// TODO Auto-generated method stub
-						super.onFailure(error, content);
 					}
 				});
 	}
-
 }

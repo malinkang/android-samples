@@ -51,6 +51,7 @@
         <activity android:name="com.mamating.activity.HomeActivity" />
         <activity android:name="com.mamating.activity.TimelineActivity" />
         <activity android:name="com.mamating.activity.FollowingListActivity" />
+        <activity android:name="com.mamating.activity.FollowerListActivity" />
         <activity android:name="com.mamating.activity.AddCourseActivity" />
     </application>
 

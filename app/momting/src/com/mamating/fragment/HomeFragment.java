@@ -23,6 +23,7 @@ import com.google.gson.reflect.TypeToken;
 import com.mamating.AppContext;
 import com.mamating.R;
 import com.mamating.activity.AddCourseActivity;
+import com.mamating.activity.FollowerListActivity;
 import com.mamating.activity.FollowingListActivity;
 import com.mamating.activity.TimelineActivity;
 import com.mamating.adapter.CourseAdapter;
@@ -85,9 +86,15 @@ public class HomeFragment extends BaseFragment implements
 		startActivity(new Intent(getActivity(), TimelineActivity.class));
 	}
 
-	@OnClick({ R.id.follows, R.id.fans })
-	public void enterFollowList() {
+	@OnClick(R.id.follows)
+	public void enterFollowingList() {
+
 		startActivity(new Intent(getActivity(), FollowingListActivity.class));
+	}
+
+	@OnClick(R.id.fans)
+	public void enterFollowerList() {
+		startActivity(new Intent(getActivity(), FollowerListActivity.class));
 	}
 
 	@OnClick(R.id.create_collect)

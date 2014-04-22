@@ -1,5 +1,10 @@
 package com.mamating.constants;
 
+/**
+ * 
+ * @author malinkang 2014年4月22日
+ * 
+ */
 public class AccountTable extends UserTable {
 	public static final String TABLE_NAME = "account";
 	public static final String COLUMN_SINA_UID = "sina_uid";

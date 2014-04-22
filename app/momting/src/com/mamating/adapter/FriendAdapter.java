@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,22 +13,27 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 import com.mamating.R;
+import com.mamating.api.FriendShipApi;
 import com.mamating.bean.FollowState;
-import com.mamating.bean.Following;
-import com.mamating.constants.FollowingTable;
+import com.mamating.bean.Friend;
+import com.mamating.constants.FriendTable;
 import com.mamating.ui.CircleImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class FollowingAdapter extends CursorAdapter {
+public class FriendAdapter extends CursorAdapter {
 
 	private ImageLoader mImageLoader;
 
 	private LayoutInflater mInflater;
 
-	public FollowingAdapter(Context context, Cursor c) {
+	private FriendShipApi friendShipApi;
+
+	public FriendAdapter(Context context, Cursor c) {
 		super(context, c);
+		mImageLoader = ImageLoader.getInstance();
 		mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		friendShipApi = new FriendShipApi(context);
 	}
 
 	static class ViewHolder {
@@ -41,6 +47,7 @@ public class FollowingAdapter extends CursorAdapter {
 		TextView nickname;
 		@InjectView(R.id.iv_follow)
 		ImageView follow;
+
 	}
 
 	@Override
@@ -49,7 +56,7 @@ public class FollowingAdapter extends CursorAdapter {
 	}
 
 	@Override
-	public void bindView(View view, Context context, Cursor cursor) {
+	public void bindView(View view, Context context, final Cursor cursor) {
 		ViewHolder holer = (ViewHolder) view.getTag();
 		if (holer == null) {
 			holer = new ViewHolder(view);
@@ -57,10 +64,14 @@ public class FollowingAdapter extends CursorAdapter {
 		}
 		// 设置头像
 		mImageLoader.displayImage(cursor.getString(cursor
-				.getColumnIndex(FollowingTable.COLUMN_AVATAR)), holer.avatar);
+				.getColumnIndex(FriendTable.COLUMN_AVATAR)), holer.avatar);
+		// 昵称
+		holer.nickname.setText(cursor.getString(cursor
+				.getColumnIndex(FriendTable.COLUMN_UNAME)));
 		// 获取关注状态
-		FollowState followState = getFollowStateForPosition(cursor
-				.getPosition());
+		String json = cursor.getString(cursor
+				.getColumnIndex(FriendTable.COLUMN_FOLLOW_STATE_JSON));
+		FollowState followState = Friend.getFollowStateFromJson(json);
 		if (followState.getFollower() == 1 && followState.getFollowing() == 1) {
 			holer.follow.setImageResource(R.drawable.each_follow_btn);
 		} else if (followState.getFollower() == 1
@@ -70,19 +81,16 @@ public class FollowingAdapter extends CursorAdapter {
 				&& followState.getFollower() == 0) {
 			holer.follow.setImageResource(R.drawable.has_follow_btn);
 		}
+		final Integer uid = cursor.getInt(cursor
+				.getColumnIndex(FriendTable.COLUMN_UID));
+		holer.follow.setOnClickListener(new OnClickListener() {
 
-	}
+			@Override
+			public void onClick(View v) {
 
-	private FollowState getFollowStateForPosition(int position) {
-		FollowState followState = null;
-		Cursor cursor = getCursor();
-		if (cursor != null) {
-			cursor.moveToPosition(position);
-			String json = cursor.getString(cursor
-					.getColumnIndex(FollowingTable.COLUMN_FOLLOW_STATE_JSON));
-			followState = Following.getFollowStateFromJson(json);
-		}
-		return followState;
+				friendShipApi.addOrCancelFollow(uid);
+			}
+		});
 	}
 
 }

@@ -7,14 +7,14 @@ import butterknife.ButterKnife.Finder;
 public class GuideActivity$$ViewInjector {
   public static void inject(Finder finder, final com.mamating.activity.GuideActivity target, Object source) {
     View view;
-    view = finder.findById(source, 2131034178);
+    view = finder.findById(source, 2131034189);
     if (view == null) {
-      throw new IllegalStateException("Required view with id '2131034178' for field 'mGuideIndicator' was not found. If this view is optional add '@Optional' annotation.");
+      throw new IllegalStateException("Required view with id '2131034189' for field 'mGuideIndicator' was not found. If this view is optional add '@Optional' annotation.");
     }
     target.mGuideIndicator = (com.viewpagerindicator.CirclePageIndicator) view;
-    view = finder.findById(source, 2131034177);
+    view = finder.findById(source, 2131034188);
     if (view == null) {
-      throw new IllegalStateException("Required view with id '2131034177' for field 'mViewPager' was not found. If this view is optional add '@Optional' annotation.");
+      throw new IllegalStateException("Required view with id '2131034188' for field 'mViewPager' was not found. If this view is optional add '@Optional' annotation.");
     }
     target.mViewPager = (android.support.v4.view.ViewPager) view;
   }

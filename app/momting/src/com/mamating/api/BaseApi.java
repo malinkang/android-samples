@@ -8,6 +8,8 @@ import com.mamating.AppContext;
 import com.mamating.bean.Account;
 
 public class BaseApi {
+
+	protected DataLoadFinishListener mDataLoadFinishListener;
 	protected AsyncHttpClient client;
 	protected AppContext mApplication = AppContext.getInstance();
 	protected Gson mGson = AppContext.getGson();
@@ -23,5 +25,10 @@ public class BaseApi {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void setmDataLoadFinishListener(
+			DataLoadFinishListener mDataLoadFinishListener) {
+		this.mDataLoadFinishListener = mDataLoadFinishListener;
 	}
 }
