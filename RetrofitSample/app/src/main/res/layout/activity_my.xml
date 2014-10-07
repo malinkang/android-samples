@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,13 +6,38 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MyActivity">
+    tools:context=".MyActivity"
+    android:orientation="vertical">
+
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/getRequestBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/login" />
+        android:text="@string/get_request"/>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/getRequestWithQueryParametersBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/get_request_with_query_parameters"/>
+
+    <Button
+        android:id="@+id/useObjectAsRequestBodyBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/use_object_as_request_body" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/form_encoded_request"
+        android:id="@+id/formEncodedRequestBtn" />
+
+    <Button
+        android:id="@+id/fileUploadBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/file_upload" />
+
+</LinearLayout>
