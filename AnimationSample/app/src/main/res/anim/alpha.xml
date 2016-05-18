@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- startOffset延时2s-->
+
+<!--fromAlpha开始的透明度，值为0.0到1.0之间 0.0透明 1.0不透明-->
+
+<!--toAlpha结束的透明度，值为0.0到1.0之间 0.0透明 1.0不透明-->
+
+<!--duration 动画执行时常-->
+
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="3000"
+    android:fromAlpha="1.0"
+    android:startOffset="1000"
+    android:toAlpha="0.0" />
