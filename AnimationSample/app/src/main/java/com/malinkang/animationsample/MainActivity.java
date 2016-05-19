@@ -12,7 +12,8 @@ import butterknife.Unbinder;
 
 public class MainActivity extends AppCompatActivity implements TextAdapter.OnItemClickListener {
 
-    public static final String[] items = {"Tween Animation", "Property Animation", "Custom TypeEvaluator"};
+    public static final String[] items = {"Tween Animation", "Property Animation", "Custom TypeEvaluator"
+            , "ViewPager Animation"};
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
 
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements TextAdapter.OnIte
         adapter.setOnItemClickListener(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
-
     }
 
 
@@ -45,9 +45,11 @@ public class MainActivity extends AppCompatActivity implements TextAdapter.OnIte
             case 2:
                 intent.setClass(this, CustomTypeEvaluatorActivity.class);
                 break;
+            case 3:
+                intent.setClass(this, ViewPagerAnimationActivity.class);
+                break;
         }
         startActivity(intent);
-        overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
     }
 
 

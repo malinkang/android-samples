@@ -1,9 +1,7 @@
 package com.malinkang.animationsample;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
@@ -55,17 +53,6 @@ public class TweenAnimationActivity extends AppCompatActivity {
     public void startTranslateAnimation() {
         TranslateAnimation translateAnimation = (TranslateAnimation) AnimationUtils.loadAnimation(this, R.anim.translate);
         mImageView.startAnimation(translateAnimation);
-    }
-
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            Intent intent = new Intent(this, MainActivity.class);
-            setResult(RESULT_OK, intent);
-            finish();
-            overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
-            return false;
-        }
-        return false;
     }
 
     @Override
