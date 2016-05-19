@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements TextAdapter.OnIte
         adapter.setOnItemClickListener(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
+
     }
 
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements TextAdapter.OnIte
                 break;
         }
         startActivity(intent);
+        overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
     }
 
 
