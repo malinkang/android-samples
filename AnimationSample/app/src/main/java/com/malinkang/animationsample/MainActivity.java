@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity implements TextAdapter.OnIte
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
 
-    private Unbinder unbinder;
-    private TextAdapter adapter;
+    public Unbinder unbinder;
+    public TextAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements TextAdapter.OnIte
         adapter.setOnItemClickListener(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
+        for (int i = 0; i < items.length; i++) {
+
+        }
     }
 
 

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.jakewharton.rxbinding.view.RxView;
 import com.jakewharton.rxbinding.view.ViewClickEvent;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +24,8 @@ import rx.functions.Func1;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG = MainActivity.class.getSimpleName();
+
     private TextView mTextView;
 
     private Button mButton;
@@ -33,7 +36,58 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mTextView = (TextView) findViewById(R.id.text);
         mButton = (Button) findViewById(R.id.btn);
-        butter();
+//        Observable.just(1, 2, 3, 4).takeFirst(new Func1<Integer, Boolean>() {
+//            @Override
+//            public Boolean call(Integer integer) {
+//                return integer > 2;
+//            }
+//        }).subscribe(new Subscriber<Integer>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(Integer integer) {
+//                Log.d(MainActivity.class.getSimpleName(), "integer=" + integer);
+//            }
+//        });
+        //butter();
+//        Observable<Integer> observable1 = Observable.just(1,2,3);
+//        Observable<Integer> observable2 = Observable.just(4,5,6);
+//        Observable<Integer> observable3 = Observable.just(7,8,9);
+//        Observable.concat(observable1,observable2,observable3).subscribe(new Subscriber<Integer>() {
+//            @Override
+//            public void onCompleted() {}
+//            @Override
+//            public void onError(Throwable e) {}
+//            @Override
+//            public void onNext(Integer integer) {
+//                Log.d(TAG,"integer="+integer);// 1,2,3,4,5,6,7,8,9
+//            }
+//        });
+
+        Observable.just(1, 2, 3).count().subscribe(new Subscriber<Integer>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+
+            }
+        })
     }
 
     public void butter() {
