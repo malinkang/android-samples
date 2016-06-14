@@ -1,0 +1,1 @@
+* [NDK-JNI实战教程（一） 在Android Studio运行第一个NDK程序](http://yanbober.github.io/2015/02/14/android_studio_jni_1/)
