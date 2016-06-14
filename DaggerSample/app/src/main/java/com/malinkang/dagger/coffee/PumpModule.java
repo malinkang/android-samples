@@ -7,12 +7,9 @@ import dagger.Provides;
 
 @Module(complete = false, library = true)
 class PumpModule {
-//    @Provides @Singleton
-//    public Thermosiphon provideThermosiphon(Heater heater) {
-//        return new Thermosiphon(heater);
-//    }
+    @Singleton
     @Provides
-    public Pump providePump(Thermosiphon pump){
+    public Pump providePump(Thermosiphon pump) {
         return pump;
     }
 

@@ -2,24 +2,27 @@ package com.malinkang.dagger;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.malinkang.dagger.coffee.CoffeeApp;
 import com.malinkang.dagger.coffee.CoffeeMaker;
 import com.malinkang.dagger.coffee.DripCoffeeModule;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
 import dagger.ObjectGraph;
+import dagger.internal.ArrayQueue;
 
 
 public class MainActivity extends FragmentActivity {
 
 
-    //@Inject CoffeeMaker coffeeMaker;
+    @Inject
+    CoffeeMaker coffeeMaker;
 
-    @Inject CoffeeApp coffeeApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +30,18 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         ObjectGraph objectGraph = ObjectGraph.create(new DripCoffeeModule());
         objectGraph.inject(this);
-       // coffeeMaker.brew();
-        coffeeApp.run();
+        coffeeMaker.brew();
+//        ArrayList<String> list = new ArrayList<>();
+//
+//        ArrayQueue<String> queue = new ArrayQueue<>();
+//        queue.add("a");
+//        int i = 0;
+//        String s;
+//        while ((s = queue.poll()) != null) {
+//            i++;
+//            queue.add("" + i);
+//            Log.e(MainActivity.class.getSimpleName(), s);
+//        }
     }
 
 
