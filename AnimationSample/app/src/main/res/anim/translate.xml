@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <!--fromXDelta  fromYDelta toXDelta toYDelta代表动画起始或者结束X / Y方向上的位置-->
+    <!--如果以浮点数字表示，是一个绝对值，代表相对自身原始位置的像素值；-->
+    <!--如果以num%表示，代表相对于自己的百分比，比如toXDelta定义为100%就表示在X方向上移动自己的1倍距离-->
+    <!--如果以num%p表示，代表相对于父类组件的百分比。-->
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/bounce_interpolator"
+    android:duration="3000"
+    android:fromXDelta="-50%p"
+    android:fromYDelta="0%p"
+    android:toXDelta="50%p"
+    android:toYDelta="0%p" />
