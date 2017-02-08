@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--android:pivotX android:pivotY 代表缩放的中轴点X/Y坐标 如果我们想表示中轴点为图像的中心，我们可以把两个属性值定义成0.5或者50%-->
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="3000"
+    android:fromXScale="0.5"
+    android:fromYScale="0.5"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:toXScale="1.5"
+    android:toYScale="1.5" />
