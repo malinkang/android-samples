@@ -19,7 +19,6 @@ package com.malinkang.recyclerview;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -28,6 +27,7 @@ import com.malinkang.recyclerview.adapter.AdapterItem;
 import com.malinkang.recyclerview.adapter.DemoAdapterItem;
 import com.malinkang.recyclerview.base.BaseRecyclerViewActivity;
 import com.malinkang.recyclerview.customlayoutmanager.CustomLayoutManagerSampleListActivity;
+import com.malinkang.recyclerview.itemdecoration.DividerItemDecoration;
 import com.malinkang.recyclerview.model.Sample;
 
 /**
@@ -49,6 +49,7 @@ public class SampleListActivity extends BaseRecyclerViewActivity<Sample> {
         mDataList.add(new Sample(ItemDecorationSampleActivity.class,"ItemDecorationSample"));
         mDataList.add(new Sample(SortedListActivity.class,"SortedListActivity"));
         mDataList.add(new Sample(DataBindingSample.class,"DataBindingSample"));
+        mDataList.add(new Sample(InsideScrollViewActivity.class,"InsideScrollView"));
         mDataList.add(new Sample(CustomLayoutManagerSampleListActivity.class,"CustomLayoutManagerSampleList"));
         mAdapter.notifyDataSetChanged();
     }
@@ -66,11 +67,6 @@ public class SampleListActivity extends BaseRecyclerViewActivity<Sample> {
         super.setupRecyclerView();
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
     }
-
-
-
-
-
     @Override
     public void onItemClick(View v, int position) {
         super.onItemClick(v, position);

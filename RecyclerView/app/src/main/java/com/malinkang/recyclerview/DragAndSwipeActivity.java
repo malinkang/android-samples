@@ -29,7 +29,6 @@ import com.malinkang.recyclerview.base.BaseRecyclerViewActivity;
 /**
  * @author malinkang
  *
-
  */
 public class DragAndSwipeActivity extends BaseRecyclerViewActivity<Integer> {
 

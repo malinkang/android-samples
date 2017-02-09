@@ -539,7 +539,8 @@ public class FlowLayoutManager extends RecyclerView.LayoutManager {
 
     private int getMaxHeightLayoutPositionInLine(int layoutPosition) {
         final View child = getChildAt(layoutPosition);
-        int maxIndexBefore = layoutPosition, maxIndexAfter = layoutPosition, maxHeightBefore = getDecoratedMeasuredHeight(child), maxHeightAfter = getDecoratedMeasuredHeight(child);
+        int maxIndexBefore = layoutPosition, maxIndexAfter = layoutPosition, maxHeightBefore = getDecoratedMeasuredHeight(child),
+                maxHeightAfter = getDecoratedMeasuredHeight(child);
         int currentIndex = layoutPosition;
         LayoutContext layoutContext = LayoutContext.fromLayoutOptions(flowLayoutOptions);
         while (currentIndex >= 0 && !isStartOfLine(currentIndex, layoutContext)) {

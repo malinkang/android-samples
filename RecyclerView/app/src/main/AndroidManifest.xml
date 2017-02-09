@@ -26,6 +26,7 @@
         <activity android:name=".customlayoutmanager.CustomLayoutManagerSampleListActivity"/>
         <activity android:name=".customlayoutmanager.RhombusLayoutManagerActivity"/>
         <activity android:name=".customlayoutmanager.FlowLayoutManagerActivity"/>
+        <activity android:name=".InsideScrollViewActivity"/>
     </application>
 
 </manifest>

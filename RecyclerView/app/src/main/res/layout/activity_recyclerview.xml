@@ -8,6 +8,10 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
+        android:clipToPadding="true"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:listDivider = "@drawable/divider"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
