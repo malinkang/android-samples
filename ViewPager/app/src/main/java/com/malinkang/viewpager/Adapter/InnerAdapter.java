@@ -11,20 +11,20 @@ import com.malinkang.viewpager.Fragment.TestFragment;
  */
 public class InnerAdapter extends FragmentPagerAdapter{
 
-    private String letter;
+    private String[] letters;
 
-    public InnerAdapter(FragmentManager fm,String letter) {
+    public InnerAdapter(FragmentManager fm,String[] letters) {
         super(fm);
-        this.letter=letter;
+        this.letters=letters;
     }
 
     @Override
     public Fragment getItem(int i) {
-        return TestFragment.newInstance(letter);
+        return TestFragment.newInstance(letters[i]);
     }
 
     @Override
     public int getCount() {
-        return 5;
+        return letters.length;
     }
 }

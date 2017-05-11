@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.nshmura.recyclertablayout.RecyclerTabLayout
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        rtl_tabIndicatorColor="?attr/colorAccent"
+        rtl_tabIndicatorHeight="2dp"
+        rtl_tabBackground="?attr/selectableItemBackground"
+        rtl_tabTextAppearance="@android:style/TextAppearance.Small"
+        rtl_tabSelectedTextColor="?android:textColorPrimary"
+        rtl_tabMinWidth="72dp"
+        rtl_tabMaxWidth="264dp"
+        rtl_tabPaddingStart="12dp"
+        rtl_tabPaddingTop="0dp"
+        rtl_tabPaddingEnd="12dp"
+        rtl_tabPaddingBottom="0dp"
+        rtl_tabPadding="0dp"/>
+
+
+</LinearLayout>

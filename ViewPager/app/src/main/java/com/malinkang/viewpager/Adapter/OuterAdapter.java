@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.malinkang.viewpager.Fragment.InnerViewPagerFragment;
-import com.malinkang.viewpager.Fragment.TestFragment;
 
 /**
  * Created by malinkang on 14/11/2.

@@ -28,7 +28,7 @@ public class LayoutHelper {
 	}
 
 	public int topVisibleEdge() {
-		return layoutManager.getPaddingTop();
+		return layoutManager.getPaddingTop();//
 	}
 
 	public int bottomVisibleEdge() {

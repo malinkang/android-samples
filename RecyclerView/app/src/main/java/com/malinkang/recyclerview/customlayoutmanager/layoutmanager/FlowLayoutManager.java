@@ -780,6 +780,7 @@ public class FlowLayoutManager extends RecyclerView.LayoutManager {
             case LEFT:
             default:
                 if (LayoutHelper.shouldStartNewline(x, childWidth, leftVisibleEdge(), rightVisibleEdge(), layoutContext)) {
+                    //新的一行
                     newLine = true;
                     rect.left = leftVisibleEdge();
                     rect.top = y + lineHeight;
@@ -797,7 +798,7 @@ public class FlowLayoutManager extends RecyclerView.LayoutManager {
 
         return newLine;
     }
-
+    //开始新的一行
     private Point startNewline(Rect rect) {
         return startNewline(rect, LayoutContext.fromLayoutOptions(flowLayoutOptions));
 

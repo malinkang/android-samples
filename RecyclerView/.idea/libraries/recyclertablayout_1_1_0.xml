@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="recyclertablayout-1.1.0">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.nshmura/recyclertablayout/1.1.0/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.nshmura/recyclertablayout/1.1.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.nshmura/recyclertablayout/1.1.0/55b01a70ec071ea60a6ee456ad0d556f4e7055df/recyclertablayout-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

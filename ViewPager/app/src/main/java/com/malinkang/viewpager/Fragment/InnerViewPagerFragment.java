@@ -4,16 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.malinkang.viewpager.Adapter.InnerAdapter;
 import com.malinkang.viewpager.R;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -23,7 +20,7 @@ public class InnerViewPagerFragment extends Fragment {
 
     private final String TAG=InnerViewPagerFragment.class.getSimpleName();
 
-    @BindView(R.id.viewpager) ViewPager mViewpager;
+//    @BindView(R.id.viewpager) ViewPager mViewpager;
 
     private String letter;
 
@@ -52,8 +49,8 @@ public class InnerViewPagerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_my, container, false);
         ButterKnife.bind(this, view);
-        InnerAdapter adapter=new InnerAdapter(getChildFragmentManager(),letter);
-        mViewpager.setAdapter(adapter);
+//        InnerAdapter adapter=new InnerAdapter(getChildFragmentManager(),letter);
+//        mViewpager.setAdapter(adapter);
         Log.d(TAG,letter+"onCreateView");
         return view;
     }

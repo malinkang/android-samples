@@ -16,12 +16,16 @@ import com.malinkang.recyclerview.base.BaseRecyclerViewActivity;
 
 public class SnapHelperSampleActivity extends BaseRecyclerViewActivity<String> {
 
+    @Override
+    public int getLayout() {
+        return R.layout.activity_snaphelper;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String[] colors = getResources().getStringArray(R.array.colors);
-        for (int i = 0; i < colors.length; i++) {
+        for (int i = 0; i < 2 ;i++) {
             mDataList.add(colors[i]);
         }
         mAdapter.notifyDataSetChanged();
@@ -32,8 +36,6 @@ public class SnapHelperSampleActivity extends BaseRecyclerViewActivity<String> {
         super.setupRecyclerView();
         LinearSnapHelper linearSnapHelper = new LinearSnapHelper();
         linearSnapHelper.attachToRecyclerView(mRecyclerView);
-
-
     }
 
     @Override

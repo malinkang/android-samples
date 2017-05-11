@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.malinkang.recyclerview.adapter.AdapterItem;
 import com.malinkang.recyclerview.adapter.TextAdapterItem;
 import com.malinkang.recyclerview.base.BaseRecyclerViewActivity;
-import com.malinkang.recyclerview.customlayoutmanager.layoutmanager.FlowLayoutManager;
+import com.malinkang.recyclerview.customlayoutmanager.layoutmanager.MyFlowLayoutManager;
 
 /**
  * Created by malk on 2017/2/7.
@@ -19,7 +19,7 @@ import com.malinkang.recyclerview.customlayoutmanager.layoutmanager.FlowLayoutMa
 public class FlowLayoutManagerActivity extends BaseRecyclerViewActivity<String> {
     @Override
     public RecyclerView.LayoutManager getLayoutManager() {
-        FlowLayoutManager flowLayoutManager = new FlowLayoutManager();
+        MyFlowLayoutManager flowLayoutManager = new MyFlowLayoutManager();
         // 限制每行最多3个
         //flowLayoutManager.maxItemsPerLine(3);
         return flowLayoutManager;
@@ -62,6 +62,34 @@ public class FlowLayoutManagerActivity extends BaseRecyclerViewActivity<String> 
         mDataList.add("土豪");
         mDataList.add("战五渣");
         mDataList.add("意大利炮");
+        mDataList.add("落日绣帘卷，");
+        mDataList.add("亭下水连空。");
+        mDataList.add("知君为我新作，");
+        mDataList.add("窗户湿青红。");
+        mDataList.add("长记平山堂上，");
+        mDataList.add("欹枕江南烟雨，");
+        mDataList.add("渺渺没孤鸿。");
+        mDataList.add("认得醉翁语，");
+        mDataList.add("山色有无中。");
+        mDataList.add("你是猴子请来的逗逼吗");
+        mDataList.add("然并卵");
+        mDataList.add("你咋不上天呢");
+        mDataList.add("日了狗了");
+        mDataList.add("妈的智障");
+        mDataList.add("我保证不打死你");
+        mDataList.add("我也是醉了");
+        mDataList.add("捡肥皂");
+        mDataList.add("妖艳贱货");
+        mDataList.add("重要的事情说三遍");
+        mDataList.add("一脸懵逼");
+        mDataList.add("总有刁民想害朕");
+        mDataList.add("老司机带带我");
+        mDataList.add("一言不合就飙车");
+        mDataList.add("洪荒之力");
+        mDataList.add("狗带");
+        mDataList.add("友谊的小船说翻就翻");
+        mDataList.add("撩妹");
+        mDataList.add("都是套路");
     }
 
     @Override
