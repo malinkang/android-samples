@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -18,11 +19,14 @@ import android.view.View;
  */
 public class InfiniteLoopViewPager extends ViewPager {
 
+    public static final String TAG = "InfiniteLoop";
+
 
     private int mIntervalMillis = 0;
     private boolean mInfiniteLoopEnable = false;
 
     private boolean isStop = true;
+
 
     private class AutoScrollTask implements Runnable {
 
@@ -51,7 +55,7 @@ public class InfiniteLoopViewPager extends ViewPager {
     }
 
 
-    public void setInterval(int intervalMillis) {
+    private void setInterval(int intervalMillis) {
         if (intervalMillis > 0) {
             mIntervalMillis = intervalMillis;
             startAutoScroll();
@@ -70,6 +74,7 @@ public class InfiniteLoopViewPager extends ViewPager {
             mHander.removeCallbacks(mAutoScrollTask);
             isStop = true;
         }
+
     }
 
 
@@ -85,42 +90,45 @@ public class InfiniteLoopViewPager extends ViewPager {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-            final int action = ev.getAction();
-            if (action == MotionEvent.ACTION_DOWN)
-                stopAutoScroll();
-            if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL)
-                startAutoScroll();
+        final int action = ev.getAction();
+        if (action == MotionEvent.ACTION_DOWN)
+            stopAutoScroll();
+        if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL)
+            startAutoScroll();
 
         return super.dispatchTouchEvent(ev);
     }
 
-    public void setInfiniteLoopEnable(boolean infiniteLoopEnable) {
+    private void setInfiniteLoopEnable(boolean infiniteLoopEnable) {
         mInfiniteLoopEnable = infiniteLoopEnable;
     }
 
     //滚动到下一页
     private void scrollToNextPage() {
         if (getAdapter() != null && getAdapter().getCount() > 0) {
-            final int curr = getCurrentItem();
+            final int curr = getCurrentItemFake();
             int nextPage = 0;
             if (curr < getAdapter().getCount() - 1) {
                 nextPage = curr + 1;
             }
-            setCurrentItem(nextPage, true);
+            Log.d(TAG, "curr=" + curr + "nextPage=" + nextPage);
+            setCurrentItemFake(nextPage, true);
         }
 
     }
 
+    private void setCurrentItemFake(int item, boolean smoothScroll) {
+        super.setCurrentItem(item, smoothScroll);
+    }
+
+    private int getCurrentItemFake() {
+        return super.getCurrentItem();
+    }
+
     @Override
     public void setAdapter(PagerAdapter adapter) {
-        if (mInfiniteLoopEnable) {
-            super.setAdapter(new InfiniteLoopPagerAdapter(adapter));
-        } else {
-            super.setAdapter(adapter);
-        }
-        // offset first element so that we can scroll to the left
+        super.setAdapter( mInfiniteLoopEnable? new InfiniteLoopPagerAdapter(adapter) : adapter);
         setCurrentItem(0);
-
 
     }
 
@@ -133,42 +141,22 @@ public class InfiniteLoopViewPager extends ViewPager {
 
     @Override
     public void setCurrentItem(int item, boolean smoothScroll) {
-        if (getAdapter().getCount() == 0||!mInfiniteLoopEnable) {
-            super.setCurrentItem(item, smoothScroll);
-            return;
+        if (getAdapter().getCount() != 0 && mInfiniteLoopEnable) {
+            InfiniteLoopPagerAdapter infAdapter = (InfiniteLoopPagerAdapter) getAdapter();
+            item = infAdapter.getCount() / 2 + item % infAdapter.getRealCount();
         }
-        item = item % getAdapter().getCount();
         super.setCurrentItem(item, smoothScroll);
     }
 
     @Override
     public int getCurrentItem() {
-        if (getAdapter().getCount() == 0||!mInfiniteLoopEnable) {
-            return super.getCurrentItem();
-        }
-        int position = super.getCurrentItem();
-        if (getAdapter() instanceof InfiniteLoopPagerAdapter) {
+        if (getAdapter().getCount() != 0 && mInfiniteLoopEnable) {
             InfiniteLoopPagerAdapter infAdapter = (InfiniteLoopPagerAdapter) getAdapter();
-            // Return the actual item position in the data backing InfiniteLoopPagerAdapter
-            return (position % infAdapter.getRealCount());
+            int position = super.getCurrentItem();
+            return position % infAdapter.getRealCount();
         } else {
             return super.getCurrentItem();
         }
     }
 
-    private int getOffsetAmount() {
-        if (getAdapter().getCount() == 0) {
-            return 0;
-        }
-        if (getAdapter() instanceof InfiniteLoopPagerAdapter) {
-            InfiniteLoopPagerAdapter infAdapter = (InfiniteLoopPagerAdapter) getAdapter();
-            // allow for 100 back cycles from the beginning
-            // should be enough to create an illusion of infinity
-            // warning: scrolling to very high values (1,000,000+) results in
-            // strange drawing behaviour
-            return infAdapter.getRealCount() * 100;
-        } else {
-            return 0;
-        }
-    }
 }

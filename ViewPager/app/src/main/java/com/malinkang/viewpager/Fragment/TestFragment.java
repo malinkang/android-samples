@@ -1,4 +1,4 @@
-package com.malinkang.viewpager.Fragment;
+package com.malinkang.viewpager.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

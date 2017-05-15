@@ -4,11 +4,14 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.malinkang.infiniteloopviewpager.InfiniteLoopViewPager
+
+    <Button
+        android:id="@+id/btn_infinite_loop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:inflateLoop="true"
-        android:id="@+id/viewpager"
-        app:interval="3500"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"
+        android:text="无限循环ViewPager"/>
 
 </LinearLayout>

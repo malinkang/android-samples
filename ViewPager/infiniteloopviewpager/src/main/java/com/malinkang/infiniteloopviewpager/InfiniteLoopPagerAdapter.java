@@ -3,19 +3,19 @@ package com.malinkang.infiniteloopviewpager;
 import android.database.DataSetObserver;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
  * A PagerAdapter that wraps around another PagerAdapter to handle paging wrap-around.
  */
-public class InfiniteLoopPagerAdapter extends PagerAdapter {
+class InfiniteLoopPagerAdapter extends PagerAdapter {
 
-    private static final String TAG = "InfiniteLoop";
-    private static final boolean DEBUG = false;
+
+    private static final int INFINITE_RATIO = 400;
 
     private PagerAdapter adapter;
+
 
     public InfiniteLoopPagerAdapter(PagerAdapter adapter) {
         this.adapter = adapter;
@@ -26,51 +26,29 @@ public class InfiniteLoopPagerAdapter extends PagerAdapter {
         if (getRealCount() == 0) {
             return 0;
         }
-        // warning: scrolling to very high values (1,000,000+) results in
-        // strange drawing behaviour
-        return Integer.MAX_VALUE;
+        return getRealCount() * INFINITE_RATIO;
     }
 
-    /**
-     * @return the {@link #getCount()} result of the wrapped adapter
-     */
-    public int getRealCount() {
-        return adapter.getCount();
-    }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        int virtualPosition = position % getRealCount();
-        debug("instantiateItem: real position: " + position);
-        debug("instantiateItem: virtual position: " + virtualPosition);
-
-        // only expose virtual position to the inner adapter
-        return adapter.instantiateItem(container, virtualPosition);
+        int realPosition = position % adapter.getCount();
+        return adapter.instantiateItem(container, realPosition);
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        int virtualPosition = position % getRealCount();
-        debug("destroyItem: real position: " + position);
-        debug("destroyItem: virtual position: " + virtualPosition);
-
-        // only expose virtual position to the inner adapter
-        adapter.destroyItem(container, virtualPosition, object);
+        int realPosition = position % adapter.getCount();
+        adapter.destroyItem(container, realPosition, object);
     }
 
-    /*
-     * Delegate rest of methods directly to the inner adapter.
-     */
 
-    @Override
-    public void finishUpdate(ViewGroup container) {
-        adapter.finishUpdate(container);
-    }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return adapter.isViewFromObject(view, object);
     }
+
 
     @Override
     public void restoreState(Parcelable bundle, ClassLoader classLoader) {
@@ -89,7 +67,7 @@ public class InfiniteLoopPagerAdapter extends PagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        int virtualPosition = position % getRealCount();
+        int virtualPosition = position % adapter.getCount();
         return adapter.getPageTitle(virtualPosition);
     }
 
@@ -115,6 +93,7 @@ public class InfiniteLoopPagerAdapter extends PagerAdapter {
 
     @Override
     public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
         adapter.notifyDataSetChanged();
     }
 
@@ -123,13 +102,12 @@ public class InfiniteLoopPagerAdapter extends PagerAdapter {
         return adapter.getItemPosition(object);
     }
 
-    /*
-     * End delegation
-     */
-
-    private void debug(String message) {
-        if (DEBUG) {
-            Log.d(TAG, message);
-        }
+    public PagerAdapter getAdapter() {
+        return adapter;
     }
+
+    public int getRealCount() {
+        return adapter.getCount();
+    }
+
 }

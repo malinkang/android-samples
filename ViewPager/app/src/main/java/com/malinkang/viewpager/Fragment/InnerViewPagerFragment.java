@@ -1,4 +1,4 @@
-package com.malinkang.viewpager.Fragment;
+package com.malinkang.viewpager.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
