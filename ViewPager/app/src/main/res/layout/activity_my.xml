@@ -14,4 +14,13 @@
         android:layout_marginTop="16dp"
         android:text="无限循环ViewPager"/>
 
+    <Button
+      android:id="@+id/btn_dynamic_page"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="32dp"
+      android:layout_marginRight="32dp"
+      android:layout_marginTop="16dp"
+      android:text="动态增加和删除页数"/>
+
 </LinearLayout>

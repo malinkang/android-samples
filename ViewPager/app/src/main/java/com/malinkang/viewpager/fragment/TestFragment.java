@@ -1,13 +1,17 @@
 package com.malinkang.viewpager.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.malinkang.viewpager.R;
 
@@ -22,21 +26,34 @@ public class TestFragment extends Fragment {
     public static final String TAG = TestFragment.class.getSimpleName();
 
     @BindView(R.id.textview) TextView mTextview;
-    private String letter;
+    private char letter;
 
-    public static TestFragment newInstance(String letter) {
+    public static TestFragment newInstance(Character letter) {
         TestFragment fragment = new TestFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("letter", letter);
+        bundle.putChar("letter", letter);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Override public void onSaveInstanceState(@NonNull Bundle outState) {
+        Log.d(TAG, letter+", onSaveInstanceState :");
+        outState.putChar("letter", letter);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        letter = getArguments().getString("letter");
-        Log.d(TAG,letter+", onCreate ");
+
+        if (savedInstanceState != null) {
+            letter = savedInstanceState.getChar("letter");
+            Log.d(TAG, letter+", onCreate :");
+
+        } else {
+            letter = getArguments().getChar("letter");
+        }
+
     }
 
     @Override
@@ -45,7 +62,7 @@ public class TestFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_test, container, false);
         ButterKnife.bind(this, view);
-        mTextview.setText(letter);
+        mTextview.setText(String.valueOf(letter));
 
         return view;
     }
