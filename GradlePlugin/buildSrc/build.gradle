@@ -1,0 +1,14 @@
+apply plugin:'groovy'
+repositories {
+    google()
+    mavenCentral()
+}
+dependencies {
+    implementation localGroovy()
+    implementation gradleApi()
+    implementation "com.android.tools.build:gradle:7.1.3"
+    implementation group: 'org.ow2.asm', name: 'asm', version: '9.1'
+    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '9.1'
+
+
+}
